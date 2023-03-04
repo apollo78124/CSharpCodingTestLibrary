@@ -204,6 +204,33 @@ namespace CodingTestLibrary
             return value;
         }
 
+        /**
+         * 
+         * int n: the length of array 
+         * int ar[n]: an array of integers
+         * int k: the integer divisor
+         * 
+         * Find any pair of int a and b in array ar where ar[a] + ar[b] is divisible by k and b > a
+         */
+        public static int divisibleSumPairs(int n, int k, List<int> ar)
+        {   
+            List<List<int>> result = new List<List<int>>();
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = i + 1; j < n; j++)
+                {
+                    if ((ar[j] + ar[i]) % k == 0)
+                    {
+                        result.Add(
+                                new List<int> { i, j }
+                            );
+                    }
+                }
+            }
+
+            return result.Count;
+        }
+
 
 
         static void Main(string[] args)
