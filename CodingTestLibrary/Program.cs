@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CodingTestLibrary
 {
@@ -243,11 +244,24 @@ namespace CodingTestLibrary
             return result.Count;
         }
 
-
+        /**
+         * For each string in queries, find how many times each string appears in the 'strings' list.  
+         */
         public static List<int> matchingStrings(List<string> strings, List<string> queries)
         {
             List<int> result = new List<int>();
+            for (int i = 0; i < queries.Count; i++)
+            {
+                result.Add(0);    
+            }
 
+            int counter = 0;
+            foreach (string s in queries)
+            {
+                result[counter] = strings.Where(a => a == s).Count();
+                counter++;
+            }
+            return result;
         }
 
 
