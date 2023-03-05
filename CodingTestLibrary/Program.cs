@@ -134,6 +134,16 @@ namespace CodingTestLibrary
          * C: Class (Convert from or to Calss i.e. ClassName1) (First char of class is uppercase)
          * V: Variable (Convert from or to variable i.e. variableName1
          * 
+         *  List<string> result = new List<string> {
+                "S;V;iPad",
+                "C;M;mouse pad",
+                "C;C;code swarm",
+                "S;C;OrangeHighlighter",
+                "S;M;plasticCup()"
+
+            };
+            CamelCase4(result);
+         * 
          */
         public static void CamelCase4(List<string> stdIn)
         {
@@ -211,6 +221,8 @@ namespace CodingTestLibrary
          * int k: the integer divisor
          * 
          * Find any pair of int a and b in array ar where ar[a] + ar[b] is divisible by k and b > a
+         * 
+
          */
         public static int divisibleSumPairs(int n, int k, List<int> ar)
         {   
@@ -232,18 +244,17 @@ namespace CodingTestLibrary
         }
 
 
+        public static List<int> matchingStrings(List<string> strings, List<string> queries)
+        {
+            List<int> result = new List<int>();
+
+        }
+
+
 
         static void Main(string[] args)
         {
-            List<string> result = new List<string> {
-                "S;V;iPad",
-                "C;M;mouse pad",
-                "C;C;code swarm",
-                "S;C;OrangeHighlighter",
-                "S;M;plasticCup()"
 
-            };
-            CamelCase4(result);
         }
 
 
