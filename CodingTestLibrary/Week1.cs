@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CodingTestLibrary
 {
-    class Program
+    class Week1
     {
         /**
          * Print the ratio of positive, negative and 0 in the array. 
@@ -263,14 +263,6 @@ namespace CodingTestLibrary
             }
             return result;
         }
-
-
-
-        static void Main(string[] args)
-        {
-
-        }
-
 
     }
 }
