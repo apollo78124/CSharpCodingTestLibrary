@@ -24,6 +24,35 @@ namespace CodingTestLibrary
             return 0;
         }
 
+        public static List<int> gradingStudents(List<int> grades)
+        {   
+            List<int> result = new List<int>();
+            int dec = 0;
+            int det = 0;
+            foreach (var score in grades)
+            {
+                if (score < 38)
+                {   
+                    result.Add(score);
+                } 
+                else
+                {
+                    dec = score / 10;
+                    det = score % 10;
+                    if (det == 3 || det == 4)
+                    {
+                        det = 5;
+                    } 
+                    else if (det == 8 || det == 9)
+                    {
+                        det = 10;
+                    }
+                    result.Add(dec * 10 + det);
+                }
+            }
+            return result;
+    }
+
         public static int findMedian(List<int> arr)
         {
             arr.Sort();
@@ -35,10 +64,10 @@ namespace CodingTestLibrary
         {
             List<int> input = new List<int>
             {
-                5, 3, 1, 2, 4
+                84, 29, 57
             };
 
-            int result = findMedian(input);
+            List<int> result = gradingStudents(input);
             Console.WriteLine(result);  
         }
     }
