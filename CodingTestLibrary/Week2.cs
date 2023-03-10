@@ -59,15 +59,54 @@ namespace CodingTestLibrary
             return arr[arr.Count / 2 + 1];
         }
 
+        public static long flippingBits(long n)
+        {
+            string binary = Convert.ToString(n, 2);
+
+            if (binary.Length < 32)
+            {
+                for (int i = binary.Length; i < 32; i++)
+                {
+                    binary = "0" + binary;
+
+                }
+            }
+
+            string result = "";
+
+            for(int i = 0; i < binary.Length; i++)
+            {
+                if (binary[i] == '0')
+                {
+                    result = result + "1";
+                } 
+                else 
+                if (binary[i] == '1')
+                {
+                    result = result + "0";
+                }
+            }
+            long longResult = 0;
+            int counter = 0;
+            for (int i = result.Length - 1; i > -1; i--)
+            {
+                if (result[i] == '1')
+                {
+                    longResult =  longResult + (long) Math.Pow(2, counter);
+                }
+                counter++;
+            }
+
+            
+
+            return longResult;
+        }
+
 
         static void Main(string[] args)
         {
-            List<int> input = new List<int>
-            {
-                84, 29, 57
-            };
+            long result = flippingBits(9);
 
-            List<int> result = gradingStudents(input);
             Console.WriteLine(result);  
         }
     }
