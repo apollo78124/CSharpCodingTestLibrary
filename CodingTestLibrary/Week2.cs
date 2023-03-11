@@ -125,6 +125,15 @@ namespace CodingTestLibrary
          * 
          * Get absolute difference difference of diagonals for any matrix passed. 
          * 
+         *  List<List<int>> arr = new List<List<int>>
+            {
+                new List<int> { 1, 2, 3 },
+                new List<int> { 4, 5, 6 },
+                new List<int> { 9, 8, 9 },
+            };
+
+            int result = diagonalDifference(arr);
+         * 
          */
         public static int diagonalDifference(List<List<int>> arr)
         {
@@ -150,6 +159,45 @@ namespace CodingTestLibrary
             return difference;
 
         }
+
+
+        /**
+         * Sort by counting the occurance of each number in an array. 
+         * Return a list of ints that contains occurances of each numbers in a range of numbers
+         * e.g.
+         * 
+         */
+        public static List<int> countingSort(List<int> arr, int n)
+        {   
+            List<int> result = new List<int>();
+            for (int i = 0; i < n; i++)
+            {
+                result.Add(0);
+            }
+
+            foreach (int i in arr)
+            {
+                result[i]++;
+            }
+            if (n > 100)
+            {
+                for (int i = result.Count - 1; i > -1; i--)
+                {
+                    if (result[i] == 0)
+                    {
+                        result.RemoveAt(i);
+                    }
+                    else if (result[i] > 0)
+                    {
+                        break;
+                    }
+                }
+            }
+
+
+            return result;
+        }
+
 
         static void Main(string[] args)
         {
