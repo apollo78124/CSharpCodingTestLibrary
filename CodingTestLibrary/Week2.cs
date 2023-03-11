@@ -59,6 +59,13 @@ namespace CodingTestLibrary
             return arr[arr.Count / 2 + 1];
         }
 
+        /**
+         *  Convert a decimal number to 32 digit binary number. 
+         *  Then flip all bits in the 32 bigit binary number
+         *  Then convert the number back to decimal
+         *  return the decimal number
+         *              long result = flippingBits(9);
+         */
         public static long flippingBits(long n)
         {
             string binary = Convert.ToString(n, 2);
@@ -102,10 +109,58 @@ namespace CodingTestLibrary
             return longResult;
         }
 
+        /**
+         * arr is a matrix. 
+         * 
+         * e.g. 
+         * 
+         * 1 2 3
+         * 4 5 6
+         * 9 8 9
+         * 
+         * left to right diagonal is 1 + 5 + 9  = 15
+         * right to left diagonal is 3 + 5 + 9 = 17
+         * 
+         * their absolute difference is | 15 - 17 | = 2
+         * 
+         * Get absolute difference difference of diagonals for any matrix passed. 
+         * 
+         */
+        public static int diagonalDifference(List<List<int>> arr)
+        {
+            int leftToRightDiagonal = 0;
+            int rightToLeftDiagonal = 0;
+
+            int leftToRightCounter = 0;
+            int rightToLeftCounter = arr.Count - 1;
+
+            foreach (List<int> list1 in arr)
+            {
+                leftToRightDiagonal = leftToRightDiagonal + list1[leftToRightCounter];
+                leftToRightCounter++;
+                rightToLeftDiagonal = rightToLeftDiagonal + list1[rightToLeftCounter];
+                rightToLeftCounter--;
+            }
+
+            int difference = leftToRightDiagonal - rightToLeftDiagonal;
+            if (difference < 0)
+            {
+                difference = 0 - difference;
+            }
+            return difference;
+
+        }
 
         static void Main(string[] args)
         {
-            long result = flippingBits(9);
+            List<List<int>> arr = new List<List<int>>
+            {
+                new List<int> { 1, 2, 3 },
+                new List<int> { 4, 5, 6 },
+                new List<int> { 9, 8, 9 },
+            };
+
+            int result = diagonalDifference(arr);
 
             Console.WriteLine(result);  
         }
