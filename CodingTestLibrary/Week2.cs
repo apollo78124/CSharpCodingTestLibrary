@@ -198,6 +198,52 @@ namespace CodingTestLibrary
             return result;
         }
 
+        /*
+         * Complete the 'countingValleys' function below.
+         *
+         * The function is expected to return an INTEGER.
+         * The function accepts following parameters:
+         *  1. INTEGER steps
+         *  2. STRING path
+         *  
+         *  
+         *  
+         */
+
+        public static int countingValleys(int steps, string path)
+        {
+            int numberOfValleys = 0;
+            int altitude = 0;
+
+            bool isInValley = false;
+
+            foreach (char c in path)
+            {
+                if (c == 'D')
+                {
+                    altitude--;
+                } else if (c == 'U')
+                {
+                    altitude++;
+                }
+
+                if (altitude < 0)
+                {
+                    if (!isInValley)
+                    {
+                        isInValley = true;
+                        numberOfValleys++;
+                    }
+
+                } else if (altitude >= 0)
+                {
+                    isInValley = false;
+                }
+
+            }
+
+            return numberOfValleys;
+        }
 
         static void Main(string[] args)
         {
