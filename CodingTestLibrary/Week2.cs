@@ -245,16 +245,40 @@ namespace CodingTestLibrary
             return numberOfValleys;
         }
 
-        static void Main(string[] args)
+        /*
+         * Complete the 'pangrams' function below.
+         *
+         * The function is expected to return a STRING.
+         * The function accepts STRING s as parameter.
+         * 
+         * Pangram is a sentence that contains every letter in an english alphabet. 
+         * When input is pangram, return "pangram"
+         * 
+         */
+
+        public static string pangrams(string s)
         {
-            List<List<int>> arr = new List<List<int>>
+            List<string> alphabets = new List<string>
             {
-                new List<int> { 1, 2, 3 },
-                new List<int> { 4, 5, 6 },
-                new List<int> { 9, 8, 9 },
+                "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"
             };
 
-            int result = diagonalDifference(arr);
+            s = s.ToLower();
+
+            foreach(var alph in alphabets)
+            {
+                if (!s.Contains(alph))
+                {
+                    return "not pangram";
+                }
+            }
+
+            return "pangram";
+        }
+
+        static void Main(string[] args)
+        {
+            var result = pangrams("We promptly judged antique ivory buckles for the next prize");
 
             Console.WriteLine(result);  
         }
