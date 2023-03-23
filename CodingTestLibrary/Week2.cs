@@ -276,11 +276,31 @@ namespace CodingTestLibrary
             return "pangram";
         }
 
+        public static int marsExploration(string s)
+        {
+            int changed = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    if (s[i] != 'S')
+                        changed++;
+                } else if (i % 3 == 1)
+                {
+                    if (s[i] != 'O')
+                        changed++;
+                } else if   (i % 3 == 2)
+                {
+                    if (s[i] != 'S')
+                        changed++;
+                }
+            }
+            return changed;
+        }
+
         static void Main(string[] args)
         {
-            var result = pangrams("We promptly judged antique ivory buckles for the next prize");
-
-            Console.WriteLine(result);  
+            
         }
     }
 }
