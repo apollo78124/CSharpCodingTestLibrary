@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -298,9 +299,126 @@ namespace CodingTestLibrary
             return changed;
         }
 
-        static void Main(string[] args)
+        public static int flippingMatrix(List<List<int>> matrix)
         {
-            
+            int result = 0;
+            List<int> columnsToFlip = new List<int>();
+            var matrix2 = matrix;
+            for (int column = 0; column < matrix.Count; column++)
+            {
+                int firstHalf = 0;
+                int secondHalf = 0;
+
+                for (int row = 0; row < (matrix.Count / 2); row++)
+                {
+                    firstHalf += matrix[row][column];
+                }
+                for (int row = matrix.Count / 2; row < matrix.Count(); row++)
+                {
+                    secondHalf += matrix[row][column];
+                }
+
+                if (secondHalf > firstHalf)
+                {
+                    columnsToFlip.Add(column);
+                }
+            }
+
+            foreach (var column in columnsToFlip)
+            {
+                matrix2 = revertColumn(matrix2, column);
+            }
+
+            foreach (var row in matrix2)
+            {
+                int firstHalf = 0;
+                int secondHalf = 0;
+                for (int c = 0; c < (matrix2.Count / 2); c++)
+                {
+                    firstHalf += row[c];
+                }
+                for (int c = matrix2.Count / 2; c < matrix.Count(); c++)
+                {
+                    secondHalf += row[c];
+                }
+
+                if (secondHalf > firstHalf)
+                {
+                    columnsToFlip.Add(column);
+                }
+            }
+
+
+            return result;
+        }
+
+        public static List<List<int>> revertColumn(List<List<int>> matrix, int columnToRevert)
+        {   
+            List<int> columnCopy = new List<int>();
+            foreach (var row in matrix)
+            {
+                columnCopy.Add(row[columnToRevert]);
+            }
+
+            int counter = matrix.Count - 1;
+
+            foreach (var row in matrix)
+            {
+                row[columnToRevert] = columnCopy[counter];
+                counter--;
+            }
+
+            return matrix;
+        }
+
+        public static List<List<int>> revertRow(List<List<int>> matrix, int rowToRevert)
+        {
+            List<List<int>> resultingMatrix = new List<List<int>>();
+
+            List<int> revertedRow = new List<int>();
+            for (int i = (matrix[rowToRevert]).Count() - 1; i >= 0; i --)
+            {
+                revertedRow.Add(matrix[rowToRevert][i]);
+            }
+
+            int counter = 0;
+            foreach(var row in matrix)
+            {
+                if (counter == rowToRevert)
+                {
+                    resultingMatrix.Add(revertedRow);
+                } else
+                {
+                    resultingMatrix.Add(row);
+                }
+                counter++;
+            }
+            return resultingMatrix;
+        }
+
+        static void Main(string[] args)
+        {   
+            List<List<int>> inputMatrix = new List<List<int>>
+            {
+                new List<int>
+                {
+                    112, 42, 83, 119
+                },
+                new List<int>
+                {
+                    56, 125, 56, 49
+                },
+                new List<int>
+                {
+                    15, 78, 101, 43
+                },
+                new List<int>
+                {
+                    62, 98, 114, 108
+                }
+
+            };
+            flippingMatrix(inputMatrix);
         }
     }
 }
