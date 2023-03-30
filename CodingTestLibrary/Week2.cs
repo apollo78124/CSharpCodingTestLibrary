@@ -303,6 +303,7 @@ namespace CodingTestLibrary
         {
             int result = 0;
             List<int> columnsToFlip = new List<int>();
+            List<int> rowsToFlip = new List<int>();
             var matrix2 = matrix;
             for (int column = 0; column < matrix.Count; column++)
             {
@@ -329,6 +330,7 @@ namespace CodingTestLibrary
                 matrix2 = revertColumn(matrix2, column);
             }
 
+            int count = 0;
             foreach (var row in matrix2)
             {
                 int firstHalf = 0;
@@ -344,10 +346,23 @@ namespace CodingTestLibrary
 
                 if (secondHalf > firstHalf)
                 {
-                    columnsToFlip.Add(column);
+                    rowsToFlip.Add(count);
                 }
+                count++;
             }
 
+            foreach (var row in rowsToFlip)
+            {
+                matrix2 = revertRow(matrix2, row);
+            }
+
+            for (int row = 0; row < (matrix.Count / 2); row++)
+            {
+                for (int c = 0; c < (matrix2.Count / 2); c++)
+                {
+                    result += matrix2[row][c];
+                }
+            }
 
             return result;
         }
