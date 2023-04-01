@@ -299,6 +299,30 @@ namespace CodingTestLibrary
             return changed;
         }
 
+        /**
+         *             //result should be 414 for this matrix
+            List<List<int>> inputMatrix = new List<List<int>>
+            {
+                new List<int>
+                {
+                    112, 42, 83, 119
+                },
+                new List<int>
+                {
+                    56, 125, 56, 49
+                },
+                new List<int>
+                {
+                    15, 78, 101, 43
+                },
+                new List<int>
+                {
+                    62, 98, 114, 108
+                }
+
+            };
+            flippingMatrix(inputMatrix);
+         */
         public static int flippingMatrix(List<List<int>> matrix)
         {
             int result = 0;
@@ -411,29 +435,28 @@ namespace CodingTestLibrary
             return resultingMatrix;
         }
 
+        public static string twoArrays(int k, List<int> A, List<int> B)
+        {
+            A.Sort();
+            B.Sort();
+            B.Reverse();
+
+            int counter = 0;
+            
+            for (int i = 0; i < A.Count; i++)
+            {
+                if (A[i] + B[i] < k)
+                {
+                    return "NO";
+                }
+            }
+
+            return "YES";
+        }
+
         static void Main(string[] args)
         {   
-            List<List<int>> inputMatrix = new List<List<int>>
-            {
-                new List<int>
-                {
-                    112, 42, 83, 119
-                },
-                new List<int>
-                {
-                    56, 125, 56, 49
-                },
-                new List<int>
-                {
-                    15, 78, 101, 43
-                },
-                new List<int>
-                {
-                    62, 98, 114, 108
-                }
 
-            };
-            flippingMatrix(inputMatrix);
         }
     }
 }
